@@ -40,7 +40,7 @@ y_pred = classifier.predict(X_test)
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
- 
+
 # Visualing the Training set results
 from matplotlib.colors import ListedColormap
 X_set, y_set = X_train, y_train
