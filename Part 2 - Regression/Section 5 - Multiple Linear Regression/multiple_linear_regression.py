@@ -54,22 +54,42 @@ import statsmodels.formula.api as sm
 X_train_row_size = np.shape(X_train)[0];
 X_train = np.append(arr = np.ones((X_train_row_size, 1)), values = X_train, axis = 1)
 
-X_opt = X_train[:, [0, 1, 2, 3, 4, 5]]
-regressor_OLS = sm.OLS(endog = y_train, exog = X_opt).fit()
-regressor_OLS.summary()
+# =============================================================================
+# X_opt = X_train[:, [0, 1, 2, 3, 4, 5]]
+# regressor_OLS = sm.OLS(endog = y_train, exog = X_opt).fit()
+# regressor_OLS.summary()
+# =============================================================================
 
-X_opt = X_train[:, [0, 1, 3, 4, 5]]
-regressor_OLS = sm.OLS(endog = y_train, exog = X_opt).fit()
-regressor_OLS.summary()
+# =============================================================================
+# X_opt = X_train[:, [0, 1, 3, 4, 5]]
+# regressor_OLS = sm.OLS(endog = y_train, exog = X_opt).fit()
+# regressor_OLS.summary()
+# =============================================================================
 
-X_opt = X_train[:, [0, 3, 4, 5]]
-regressor_OLS = sm.OLS(endog = y_train, exog = X_opt).fit()
-regressor_OLS.summary()
+# =============================================================================
+# X_opt = X_train[:, [0, 3, 4, 5]]
+# regressor_OLS = sm.OLS(endog = y_train, exog = X_opt).fit()
+# regressor_OLS.summary()
+# =============================================================================
 
 X_opt = X_train[:, [0, 3, 5]]
 regressor_OLS = sm.OLS(endog = y_train, exog = X_opt).fit()
 regressor_OLS.summary()
 
-X_opt = X_train[:, [0, 3]]
-regressor_OLS = sm.OLS(endog = y_train, exog = X_opt).fit()
-regressor_OLS.summary()
+# =============================================================================
+# X_opt = X_train[:, [0, 3]]
+# regressor_OLS = sm.OLS(endog = y_train, exog = X_opt).fit()
+# regressor_OLS.summary()
+# =============================================================================
+
+
+X_train_2 = X_train[:, [3, 5]]
+X_test_2 = X_test[:, [2, 4]]
+
+# Fitting Multiple Linear Regression to the Training Set
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train_2, y_train)
+
+# Predicting the Test set results
+y_pred_2 = regressor.predict(X_test_2)
